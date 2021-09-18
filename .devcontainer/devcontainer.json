@@ -1,0 +1,28 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+	"name": "compiler-ws",
+	"build": {
+		"dockerfile": "Dockerfile",
+	},
+	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"],
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		//"ms-vscode.cpptools",
+		"egormkn.vscode-language-lama"
+	],
+
+	// "forwardPorts": [],
+
+	// "postCreateCommand": "gcc -v",
+
+	//"remoteUser": "vscode",
+	//"runArgs": ["--userns=keep-id"],
+
+	// Fix for podman
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,Z",
+	"workspaceFolder": "/workspace",
+}
