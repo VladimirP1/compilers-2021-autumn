@@ -413,7 +413,7 @@ fun compile (env, code) {
             else
               [env, code <+ Label(l)]
             fi
-        | JMP (l) -> [env.setStack(l).setBarrier, code <+ Jmp(l)]
+        | JMP (l) -> [env.setStack(l), code <+ Jmp(l)]
         | CJMP (c, l) -> 
             case env.pop of
               [s, env] -> [env.setStack(l), code <+ Mov(s, eax) <+ Binop("-", L(0), eax) <+ CJmp(c, l)]
